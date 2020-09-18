@@ -1,0 +1,16 @@
+language: csharp
+mono: latest
+dotnet: 3.1.200
+before_install:
+- sudo apt-get install nunit-console
+script:
+- dotnet restore
+- msbuild
+- dotnet test ./UrlBookApiTest/bin/Debug/netcoreapp3.1/*.dll
+deploy:
+provider: heroku
+api_key:
+secure: 6c406c5b-54b8-4f2e-a5d3-28b36502815b
+app: myorgbookmarkurlapp
+on:
+repo: AnandSKarjagi/BookmarkUrlApi
