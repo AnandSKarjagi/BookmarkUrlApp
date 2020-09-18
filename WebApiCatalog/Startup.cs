@@ -164,11 +164,6 @@ namespace WebApiCatalog
 
             app.UseAuthorization();
 
-            /* Configure the app to provide a token in a cookie called XSRF-TOKEN */
-            /* Custom Middleware Component is required to Set the cookie which is named XSRF-TOKEN 
-             * The Value for this cookie is obtained from IAntiForgery service
-             * We must configure this cookie with HttpOnly option set to false so that browser will allow JS to read this cookie
-             */
             app.Use(nextDelegate => context =>
             {
                 string path = context.Request.Path.Value.ToLower();
